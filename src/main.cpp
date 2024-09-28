@@ -7,9 +7,11 @@ auto main() -> int {
 	
 	httplib::Server svr;
 
-	svr.Get("/hi", [](const httplib::Request &, httplib::Response &res) {
-		res.set_content("Hello World!", "text/plain");
-	});
 
-	svr.listen("0.0.0.0", 8080);
+	svr.Post("/", [&](const httplib::Request& req, httplib::Response& res) {
+		cout << req.body << "\n";
+		res.status = 200;
+		return true;
+	});
+	svr.listen("0.0.0.0", 10043);
 }
