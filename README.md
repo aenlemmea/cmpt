@@ -1,19 +1,18 @@
-cry Tool
+## cry Tool
 
-Tool to help with competitive programming.
+Tool to help with competitive programming. Use [Competitive Companion](https://github.com/jmerle/competitive-companion) as an extension for fetching.
 
+### USAGE:
 
-Usage:
+1. `cry fo` 
 
-1. `cry fo <problem-id>`
-
-Fetches one problem. Equivalent to `cry --fetch-one <problem-id>`
+Fetches one problem. Equivalent to `cry --fetch-one`
 
 -----
 
-2. `cry fc <contest-id>` 
+2. `cry fc` 
 
-Fetches entire contest. Equivalent to `cry --fetch-contest <problem-id>`
+Fetches entire contest. Equivalent to `cry --fetch-contest`
 
 -----
 
@@ -39,8 +38,14 @@ Set the template file or the compiler flags or the testing requirements. Set cle
 
 WARNING. Attempts to delete all the binary-name. If ran with contest-id, deletes all binaries found in that directory. Multiple contest-ids can be stated
 
+-----
 
-DIRECTORY STYLE:
+7. `cry ape <problem-id>`
+
+[Low Priority] Equivalent to `cry --apetize <problem-id>` to dump the problem to any local LLM model and get a much cleaner reading statement. 
+
+
+### DIRECTORY STYLE:
 
 For `cry fo <problem-id>`
 
@@ -51,3 +56,6 @@ A2019/
 └── test_case.out
 
 ```
+#### Why `cry`?
+
+Well, the plan was to use `cmp`, but `cmp` is already used as a tool in GNU/Linux environment, hence had to settle for `cry`. Feel free to alias.
