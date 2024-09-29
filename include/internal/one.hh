@@ -1,6 +1,8 @@
 #ifndef ONE_H
 #define ONE_H
 
+#include <string_view>
+
 #include "httplib.h"
 #include "json.hpp"
 
@@ -10,10 +12,10 @@ private:
 	bool isFetched = false;
 	nlohmann::json data_one;
 	void fetch_one(httplib::Server& svr);
-	bool create_directory(std::string& last_two);
-	bool place_files();
-	bool write_test_case(std::string& file_name);
-	bool copy_template();
+	[[nodiscard]] bool create_directory(std::string_view last_two);
+	[[nodiscard]] bool place_files();
+	[[nodiscard]] bool write_test_case(std::string_view file_name);
+	[[nodiscard]] bool copy_template();
 };
 
 
