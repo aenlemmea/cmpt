@@ -1,4 +1,4 @@
-## cry Tool
+## cmpt (cry tool)
 
 Tool to help with competitive programming. Use [Competitive Companion](https://github.com/jmerle/competitive-companion) as an extension for fetching.
 
@@ -30,7 +30,8 @@ Test the binary name with the prefetched test\_case.in and test\_case.out files.
 
 5. `cry config <--template>|<--compile-flags>|<--test-req>|<--clean-args>`
 
-Set the template file or the compiler flags or the testing requirements. Set cleaning arguments for what files with stated extensions will be removed by `cry clean`
+Set the template file and a alias for it or the compiler flags or the testing requirements. Set cleaning arguments for what files with stated extensions will be removed by `cry clean`.
+Set template placement strategy i.e, OVERWRITE or ADD\_DUPLICATE. Also pick template via aliases that would be placed in the directories.
 
 -----
 

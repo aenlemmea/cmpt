@@ -22,3 +22,27 @@ void one::fetch_one(httplib::Server& svr) {
 		});
 		svr.listen("0.0.0.0", 10043);
 	}
+
+[[nodiscard]] bool one::create_directory(std::string& last_two) {
+	// Grab context of where we are currently in directory path.
+	// Directory name already exists (E.g, 954) -> Go inside, directory with problem hash_num (E.g, G) already exists -> WARN user. Exit.
+	// Else create directory (E.g, 954) -> Create hash_num directory (E.g, G)
+	return true;
+}
+
+[[nodiscard]] bool one::place_files() {
+	// Call write_test_case("in");
+	// Call write_test_case("out");
+	// Call copy_template();
+	return true;
+}
+
+[[nodiscard]] bool one::write_test_case(std::string& file_name) {
+	
+	return true;
+}
+
+[[nodiscard]] bool one::copy_template() {
+
+	return true;
+}
