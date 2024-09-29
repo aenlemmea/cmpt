@@ -7,3 +7,18 @@
 // Write test_case.out; Put tests.input(s). Delimit each by ###
 // Copy default template to sol.cpp
 
+#include "httplib.h"
+#include "json.hpp"
+#include "internal/one.hh"
+
+void one::fetch_one(httplib::Server& svr) {
+		svr.Post("/", [&](const httplib::Request& req, httplib::Response& res) {
+			// cout << req.body << "\n";
+			using json = nlohmann::json;
+			json data = json::parse(req.body);
+			std::cout << data.dump(4) << std::endl;
+			res.status = 200;
+			return true;
+		});
+		svr.listen("0.0.0.0", 10043);
+	}
