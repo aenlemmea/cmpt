@@ -1,5 +1,3 @@
-// Comp Comp POST to listener.
-// For open -> Grab last two part of url (E.g, /954/G)
 // Turn it into a directory (E.g, G954) || Maybe allow h by ###
 // Write test_case.out; Put tests.input(s). Delimit each by ###
 // Copy default template to sol.cpp
@@ -13,7 +11,7 @@ namespace fs = std::filesystem;
 
 void one::fetch_one(httplib::Server &svr) {
     svr.Post("/", [&](const httplib::Request &req, httplib::Response &res) {
-        // cout << req.body << "\n";
+        std::cout << req.body << "\n";
         data_one = nlohmann::json::parse(req.body);
         res.status = 200;
         return true;
@@ -66,4 +64,15 @@ bool one::place_files() {
         return true;
     } else
         return false;
+}
+
+bool one::do_fetch_one() {
+  // if(place_files()) {
+  //   return true;
+  // } else {
+  //   return false;
+  // }
+  httplib::Server svr;
+
+  fetch_one(svr);
 }
