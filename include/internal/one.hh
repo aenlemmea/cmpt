@@ -8,6 +8,7 @@
 
 struct one {
     bool do_fetch_one();
+    void show_data() const;
 
   private:
     bool isFetched = false;

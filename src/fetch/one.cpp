@@ -6,17 +6,19 @@
 #include <cstdlib>
 #include <filesystem>
 #include <fstream>
+#include <iostream>
 
 namespace fs = std::filesystem;
 
 void one::fetch_one(httplib::Server &svr) {
     svr.Post("/", [&](const httplib::Request &req, httplib::Response &res) {
-        std::cout << req.body << "\n";
+        // std::cout << req.body << "\n";
         data_one = nlohmann::json::parse(req.body);
         res.status = 200;
+	std::cout << "Successfully Got Data" << "\n";
+        isFetched = true;
         return true;
     });
-    svr.listen("0.0.0.0", 10043);
 }
 
 bool one::create_directory() {
@@ -67,12 +69,26 @@ bool one::place_files() {
 }
 
 bool one::do_fetch_one() {
-  // if(place_files()) {
-  //   return true;
-  // } else {
-  //   return false;
-  // }
-  httplib::Server svr;
+    // if(place_files()) {
+    //   return true;
+    // } else {
+    //   return false;
+    // }
+    httplib::Server svr;
 
-  fetch_one(svr);
+    fetch_one(svr);
+    std::cout << "Starting Server... " << "\n";
+    while(!isFetched) {
+        svr.listen("0.0.0.0", 10043);
+    }
+    svr.stop();
+    std::cout << "Server Closed... " << "\n";
+    std::cout << "isFetched: " << isFetched << "\n";
+    show_data();
+    return true;
+}
+
+void one::show_data() const {
+    using std::cout;
+    cout << "\nDumped data is: " << "\n" << data_one.dump(4) << "\n";
 }
