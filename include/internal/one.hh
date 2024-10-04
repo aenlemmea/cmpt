@@ -3,6 +3,7 @@
 
 #include <string_view>
 
+#include "atomic"
 #include "httplib.h"
 #include "json.hpp"
 
@@ -11,7 +12,7 @@ struct one {
     void show_data() const;
 
   private:
-    bool isFetched = false;
+    std::atomic<bool> isFetched{false};
     std::string_view contest_id, id_char;
     nlohmann::json data_one;
     void fetch_one(httplib::Server &svr);

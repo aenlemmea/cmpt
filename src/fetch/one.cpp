@@ -3,19 +3,21 @@
 // Copy default template to sol.cpp
 
 #include "internal/one.hh"
+#include "internal/logger.hh"
+
+#include <chrono>
 #include <cstdlib>
 #include <filesystem>
 #include <fstream>
-#include <iostream>
+#include <thread>
 
 namespace fs = std::filesystem;
 
 void one::fetch_one(httplib::Server &svr) {
     svr.Post("/", [&](const httplib::Request &req, httplib::Response &res) {
-        // std::cout << req.body << "\n";
         data_one = nlohmann::json::parse(req.body);
         res.status = 200;
-	std::cout << "Successfully Got Data" << "\n";
+	Logger::log("Successfully Got Data");
         isFetched = true;
         return true;
     });
@@ -77,13 +79,18 @@ bool one::do_fetch_one() {
     httplib::Server svr;
 
     fetch_one(svr);
-    std::cout << "Starting Server... " << "\n";
+    Logger::log("Starting Server... ");
+    std::thread server_thread([&svr]() { svr.listen("0.0.0.0", 10043); });
+
     while(!isFetched) {
-        svr.listen("0.0.0.0", 10043);
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
+
     svr.stop();
-    std::cout << "Server Closed... " << "\n";
-    std::cout << "isFetched: " << isFetched << "\n";
+    server_thread.join();
+
+    Logger::log("Server Closed... ");
+    Logger::log("isFetched: " + std::to_string(isFetched));
     show_data();
     return true;
 }

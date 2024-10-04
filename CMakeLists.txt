@@ -6,6 +6,8 @@ set(CMAKE_CXX_COMPILER g++)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+add_definitions(-DDEBUG)
+
 add_executable(cry src/main.cpp src/fetch/one.cpp)
 target_include_directories(cry PUBLIC include/)
 target_include_directories(cry PRIVATE include/internal)
