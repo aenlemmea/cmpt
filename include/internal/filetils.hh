@@ -20,8 +20,4 @@ static const std::string& getCurrentWorkingDirectory() {
 	return cwd;
 }
 
-static const uint8_t getSelectedTemplate() {
-	return 1;
-}
-
 #endif
