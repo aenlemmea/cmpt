@@ -5,7 +5,11 @@
 // Copy default template to sol.cpp
 
 #include "internal/one.hh"
+#include <cstdlib>
 #include <filesystem>
+#include <fstream>
+
+namespace fs = std::filesystem;
 
 void one::fetch_one(httplib::Server &svr) {
     svr.Post("/", [&](const httplib::Request &req, httplib::Response &res) {
@@ -18,9 +22,7 @@ void one::fetch_one(httplib::Server &svr) {
 }
 
 bool one::create_directory() {
-    namespace fs = std::filesystem;
-    fs::path cwd = fs::current_path();
-    fs::path new_dir = cwd / contest_id / id_char;
+    const fs::path new_dir = fs::current_path() / contest_id / id_char;
 
     if(fs::exists(new_dir)) {
         return false;
@@ -32,13 +34,36 @@ bool one::create_directory() {
     return true;
 }
 
+bool one::write_test_case(std::string_view file_name) {
+    const fs::path c_file
+      = fs::current_path() / contest_id / id_char / file_name;
+
+    std::ofstream file(c_file);
+    if(file.is_open()) {
+        // Write to file based on the type
+        if(file_name == "in") {
+            // file << test_case_input;
+        } else if(file_name == "out") {
+        } else {
+            return false;
+        }
+        file.close();
+        return true;
+    }
+    return false;
+}
+
+bool one::copy_template() { return true; }
+
 bool one::place_files() {
     // Call write_test_case("in");
     // Call write_test_case("out");
     // Call copy_template();
-    return true;
+    if(this->create_directory()) {
+        write_test_case("in");
+        write_test_case("out");
+        copy_template();
+        return true;
+    } else
+        return false;
 }
-
-bool one::write_test_case(std::string_view file_name) { return true; }
-
-bool one::copy_template() { return true; }
