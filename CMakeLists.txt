@@ -8,13 +8,17 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_definitions(-DDEBUG)
 
-add_executable(cry src/main.cpp)
+list(APPEND SOURCE_FILES src/main.cpp
+						src/fetchers/one.cc)
+
+add_executable(cry ${SOURCE_FILES})
 target_include_directories(cry PUBLIC include/)
 target_include_directories(cry PRIVATE include/internal)
+target_include_directories(cry PRIVATE include/crow_include/)
 
 
 set(SUBMODULES_LIST
-	"${PROJECT_SOURCE_DIR}/lib/json"
+	"${PROJECT_SOURCE_DIR}/lib/Crow/"
 )
 set(MISSING_SUBMODULES FALSE)
 

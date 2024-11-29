@@ -46,6 +46,14 @@ WARNING. Attempts to delete all the binary-name. If ran with contest-id, deletes
 [Low Priority] Equivalent to `cry --apetize <problem-id>` to dump the problem to any local LLM model and get a much cleaner reading statement. 
 
 
+### BUILDING
+
+1. CMake will auto populate the deps and recursively hydrate the submodules. (`Crow` framework for the http server).
+2. You will manually need to install the `asio-dev` or `asio-devel` library for their headers (needed by crow).
+3. Rest create a `build` directory, enter it as: `mkdir -p build && cd build`
+4. Run `cmake .. -G "Unix Makefiles"`. or, instead of step 3 and 4: you can run `./build.sh` and it will do everything for you.
+5. Run `./build.sh` to get a clean slate.
+
 ### DIRECTORY STYLE:
 
 For `cry fo <problem-id>`

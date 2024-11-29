@@ -18,3 +18,5 @@ compile_commands.json
 lib/raw/
 lib/built
 .cache/
+
+.asio-devel-install-deps
