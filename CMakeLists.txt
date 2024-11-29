@@ -1,20 +1,19 @@
 cmake_minimum_required(VERSION 3.28)
 project(cmpt LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 17 CACHE STRING "The CPP standard in use")
+set(CMAKE_CXX_STANDARD 20 CACHE STRING "The CPP standard in use")
 set(CMAKE_CXX_COMPILER g++)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_definitions(-DDEBUG)
 
-add_executable(cry src/main.cpp src/fetch/one.cpp)
+add_executable(cry src/main.cpp)
 target_include_directories(cry PUBLIC include/)
 target_include_directories(cry PRIVATE include/internal)
 
 
 set(SUBMODULES_LIST
-	"${PROJECT_SOURCE_DIR}/lib/cpp-httplib"
 	"${PROJECT_SOURCE_DIR}/lib/json"
 )
 set(MISSING_SUBMODULES FALSE)
