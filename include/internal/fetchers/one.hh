@@ -1,5 +1,5 @@
-#ifndef FETCHERS_ONE_HH
-#define FETCHERS_ONE_HH
+#ifndef CMPT_FETCHERS_ONE_HH
+#define CMPT_FETCHERS_ONE_HH
 
 #include <optional>
 #include "../../crow_include/crow.h"
