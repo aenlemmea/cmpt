@@ -24,7 +24,7 @@ Run the binary-name. If binary-name is not found, attempts to compile and run fr
 
 4. `cry rt <binary-name>`
 
-Test the binary name with the prefetched test\_case.in and test\_case.out files. If binary-name is not found, attempt to compile, run and test. Compilation criteria is same as for `cry rn`
+Test the binary name with the prefetched test.in and test.out files. If binary-name is not found, attempt to compile, run and test. Compilation criteria is same as for `cry rn`
 
 -----
 
