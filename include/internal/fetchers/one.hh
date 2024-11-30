@@ -4,6 +4,7 @@
 #include <optional>
 #include "../../crow_include/crow.h"
 #include "models/problem_model.hh"
+#include "contest.hh"
 
 namespace cmpt {
     class one {

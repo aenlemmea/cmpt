@@ -4,11 +4,7 @@
 #include "problem_model.hh"
 
 namespace cmpt {
-
-    struct contest {
-        // Doesn't make sense for this class to exist.
-    };
-
+    // Doesn't make sense for this class to exist.
 };
 
 #endif
