@@ -3,15 +3,17 @@
 
 #include <optional>
 #include "../../crow_include/crow.h"
+#include "models/problem_model.hh"
 
 namespace cmpt {
     class one {
     public:
         std::optional<bool> get_data();
-        std::optional<bool> wrangle() const;
+        std::optional<bool> wrangle(const crow::json::rvalue& json_data);
         void show() const noexcept;
     private:
-        crow::json::wvalue json_data;
+        constexpr static bool is_one = true;
+        problem prob;
     };
 };
 

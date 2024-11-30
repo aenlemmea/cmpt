@@ -1,8 +1,9 @@
-#ifndef CMPT_MODELS_ONE_HH
-#define CMPT_MODELS_ONE_HH
+#ifndef CMPT_MODELS_PROBLEM_MODEL_ONE_HH
+#define CMPT_MODELS_PROBLEM_MODEL_ONE_HH
 
 #include <string>
 #include <vector>
+#include <cstdint>
 
 // Test case data
 struct __test {
@@ -14,25 +15,28 @@ struct __test {
 // Batch configuration
 struct __batch {
     std::string id;  // UUIDv4
-    int size;        // Size of the batch
+    uint32_t size;        // Size of the batch
 };
 
 
 namespace cmpt {
     struct problem {
-        std::string name;           // The full name of the problem
-        std::string group;          // Contest name?
-        std::vector<__test> tests;    // Array of test cases
-        std::string testType;       // Type of the tests (single or multiNumber). TODO Figure out what to do about multiNumber
-        __batch batch;                // Batch information
+        std::string name;               // The full name of the problem
+        std::string group;              // Contest name?
+        std::string url;                // Contest URL
+        std::vector<__test> tests;      // Array of test cases
+        std::string testType;           // Type of the tests (single or multiNumber). TODO Figure out what to do about multiNumber
+        __batch batch;                  // Batch information
+        uint32_t numTestCases;
+
 
         // Not using the following options for now.
-        // __input inputConfig;        // Input configuration
-        // __output outputConfig;      // Output configuration
-        // __java_settings languages;     // Java specific settings
-        // bool interactive = false;   // Optional: Whether this is an interactive problem
-        // int memoryLimit = 0;        // Memory limit in MB
-        // int timeLimit = 0;          // Time limit in ms
+        // __input inputConfig;         // Input configuration
+        // __output outputConfig;       // Output configuration
+        // __java_settings languages;   // Java specific settings
+        // bool interactive = false;    // Optional: Whether this is an interactive problem
+        // int memoryLimit = 0;         // Memory limit in MB
+        // int timeLimit = 0;           // Time limit in ms
     };
 
     // Java-specific configuration
@@ -69,6 +73,7 @@ namespace cmpt {
     //     std::shared_ptr<File> file;
     // };
 };
+
 
 
 #endif
