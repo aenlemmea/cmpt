@@ -19,4 +19,6 @@ lib/raw/
 lib/built
 .cache/
 
+*.kate-swp
+
 .asio-devel-install-deps

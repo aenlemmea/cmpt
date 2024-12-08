@@ -28,16 +28,21 @@ Test the binary name with the prefetched test.in and test.out files. If binary-n
 
 -----
 
-5. `cry config <--template>|<--compile-flags>|<--test-req>|<--clean-args>`
+5. `cry config <--template> <--template-alias>|<--compile-flags> <--flag-preset-name>|`
 
-Set the template file and a alias for it or the compiler flags or the testing requirements. Set cleaning arguments for what files with stated extensions will be removed by `cry clean`.
-Set template placement strategy i.e, OVERWRITE or ADD\_DUPLICATE. Also pick template via aliases that would be placed in the directories.
+Only running `cry config` shows you what the current config is. 
+
+Set the template file and a alias for it or the compiler flags. 
+
+The base minimul compile-flag is set to `-Wall -Wextra -O2 -std=c++20 -Wconversion -Wduplicated-cond -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -fsanitize=address`. Currently `g++` support is baked in, `clang++` support is due.
 
 -----
 
-6. `cry clean <...contest-id>|<problem-id>`
+6. `cry clean <...contest-id>|<problem-id>| rm <--template-alias>`
 
-WARNING. Attempts to delete all the binary-name. If ran with contest-id, deletes all binaries found in that directory. Multiple contest-ids can be stated
+Only running `cry clean` would attempt to clear 
+
+WARNING. Attempts to delete all the binary-name. If ran with contest-id, deletes all binaries found in that directory. Multiple contest-ids can be stated. The last part allows deleting templates. Note: the default template CANNOT be deleted under any circumstance.
 
 -----
 
@@ -65,6 +70,15 @@ A2019/
 └── test_case.out
 
 ```
+#### TODO
+
+[] Support template placement strategies (viz. OVERWRITE or ADD_DUP)
+[] Clang++ support for compilation flags
+[] Custom directory structre or Alternate directory structure.
+[] (Multithreading) Experiment with placing files first in a temp directory then mv after data is fetched. 
+[] Color support.
+[] Integrate fzf for template pickers.
+
 #### Why `cry`?
 
 Well, the plan was to use `cmp`, but `cmp` is already used as a tool in GNU/Linux environment, hence had to settle for `cry`. Feel free to alias.

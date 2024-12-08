@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <filesystem>
+#include <unistd.h>
+#include <sys/types.h>
+#include <pwd.h>
 
 namespace fs = std::filesystem;
 
@@ -19,5 +22,26 @@ static const std::string& getCurrentWorkingDirectory() {
 	}
 	return cwd;
 }
+
+static const std::string getHomeDirectory() {
+	if (const char* homedir = std::getenv("HOME")) {
+		return std::string(homedir);
+	}
+	if (struct passwd* pw = getpwuid(getuid())) {
+		return std::string(pw->pw_dir);
+	}
+
+	throw std::runtime_error("Unable to determine home directory");
+}
+
+static const std::string readJsonToString(const std::string& path) {
+	std::ifstream inpfile(path);
+	if(!inpfile) throw std::runtime_error("Cannot open file to read");
+	std::string content((std::istreambuf_iterator<char>(inpfile)),
+						std::istreambuf_iterator<char>());
+
+	return content;
+}
+
 
 #endif

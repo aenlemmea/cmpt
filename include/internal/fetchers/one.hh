@@ -10,9 +10,10 @@ namespace cmpt {
     class one {
     public:
         std::optional<bool> get_data();
-        std::optional<bool> wrangle(const crow::json::rvalue& json_data);
         void show() const noexcept;
+        friend class contest;
     private:
+        std::optional<bool> wrangle(const crow::json::rvalue& json_data);
         constexpr static bool is_one = true;
         problem prob;
     };

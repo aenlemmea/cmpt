@@ -1,0 +1,17 @@
+{
+    "default_template": {
+        "path": "~/.cmpt/sol.cpp",
+        "name": "Default Template"
+    },
+    "templates": {
+        "my_custom_template": {
+            "path": "~/.cmpt/my_custom_template/sol.cpp",
+            "name": "My Custom Template"
+        }
+    },
+    "compile_flags": {
+        "g++": {
+            "base": "-Wall -Wextra -O2 -std=c++20 -Wconversion -Wduplicated-cond -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -fsanitize=address"
+        }
+    }
+}
