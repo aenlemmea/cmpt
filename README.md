@@ -1,3 +1,7 @@
+```
+Support_String::x86_64::GNU/Linux::Unix Makefiles
+```
+
 ## cmpt (cry tool)
 
 Tool to help with competitive programming. Use [Competitive Companion](https://github.com/jmerle/competitive-companion) as an extension for fetching.
@@ -72,12 +76,12 @@ For `cry fo <problem-id>`
 ```
 #### TODO
 
-[] Support template placement strategies (viz. OVERWRITE or ADD_DUP)
-[] Clang++ support for compilation flags
-[] Custom directory structre or Alternate directory structure.
-[] (Multithreading) Experiment with placing files first in a temp directory then mv after data is fetched. 
-[] Color support.
-[] Integrate fzf for template pickers.
+- [ ] Support template placement strategies (viz. OVERWRITE or ADD_DUP)
+- [ ] Clang++ support for compilation flags
+- [ ] Custom directory structre or Alternate directory structure.
+- [ ] (Multithreading) Experiment with placing files first in a temp directory then mv after data is fetched. 
+- [ ] Color support.
+- [ ] Integrate fzf for template pickers.
 
 #### Why `cry`?
 
