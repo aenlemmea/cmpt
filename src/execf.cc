@@ -3,7 +3,7 @@
 
 namespace cmpt {
 
-    void execf::execute_one_ult(config& cnf, one& o, bool isContest) {
+    void execf::execute_one_ult(config& cnf, one& o, const bool isContest) {
         if (!isContest) { o.get_data(); }
         const auto full_dir_name = o.get_full_dirname();
         std::string dir_path = ::getCurrentWorkingDirectory() + "/" + full_dir_name.substr(1) + "/" + full_dir_name;
@@ -40,12 +40,12 @@ namespace cmpt {
     void execf::execute_contest_ult(config& cnf) {
 
         // BUG Cannot reuse execute_one_ult due to file name being a mess with it. :(
+        // The bug happens because the url we get for contest is  https://codeforces.com/contest/2050/problem/A so problem appears.
         // TODO Change this to fix the bug above.
         contest cnt;
-        bool isContest = true;
         cnt.get_data_contest();
         for (auto& e : cnt.expose_contest()) {
-            execute_one_ult(cnf, e, isContest);
+            execute_one_ult(cnf, e, true);
         }
     }
 };

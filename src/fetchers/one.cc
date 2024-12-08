@@ -46,16 +46,45 @@ namespace cmpt {
         return std::optional<bool> { true };
     }
 
-    const std::string one::get_full_dirname() {
-         auto pos = prob.url.rfind('/');
+    bool isNumberCustom(const std::string& str) {
+        if(str.empty()) return false;
+        size_t i = 0;
+        if (str[0] == '+' || str[0] == '-') i = 1;
 
-         std::string_view sss(prob.url.c_str(), pos);
-         auto penpos = sss.rfind('/');
-
-         // ul + penul
-         return std::string(prob.url.substr(pos + 1)) + std::string(sss.substr(penpos + 1, sss.length()));
+        bool hasDigits = false, hasDecimalPoint = false;
+        for (; i < str.size(); ++i) {
+            if (std::isdigit(str[i])) {
+                hasDigits = true;
+            } else if (str[i] == '.' && !hasDecimalPoint) {
+                hasDecimalPoint = true;
+            } else {
+                return false;
+            }
+        }
+        return hasDigits;
     }
 
+    const std::string one::get_full_dirname() {
+        auto pos = prob.url.rfind('/');
+        const char* uri = prob.url.c_str();
+        auto length = prob.url.length();
+
+        std::string_view sss(uri, pos);
+        auto penpos = sss.rfind('/');
+
+        if (isNumberCustom(std::string(sss.substr(penpos + 1, sss.length())))) {
+            return std::string(prob.url.substr(pos + 1, length)) + std::string(sss.substr(penpos + 1, sss.length()));
+        } else {
+            // I HATE THIS I HATE THIS I HATE THIS
+            // Definitely redoing this.
+            std::string_view ssss(uri, pos);
+            auto inpos = ssss.rfind('/');
+            std::string_view lookin(uri, inpos);
+            auto inpos_in = lookin.rfind('/');
+            return std::string(prob.url.substr(pos + 1, length)) + std::string(lookin.substr(inpos_in + 1));
+        }
+        // ul + penul
+    }
 
     // I know I know I should define this in problem.hh but doing so gives weird linker errors.
     // BUG Investigate why the linker errors happen.

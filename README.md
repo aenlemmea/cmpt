@@ -6,7 +6,7 @@ Support_String::x86_64::GNU/Linux::Unix Makefiles
 
 Tool to help with competitive programming. Use [Competitive Companion](https://github.com/jmerle/competitive-companion) as an extension for fetching. Mainly for codeforces.
 
-Note: This tool is written for my personal use. 
+Note: This tool is written for my personal use. Major refactor incoming as this is my first cpp project.
 
 ### USAGE:
 
