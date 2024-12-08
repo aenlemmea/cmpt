@@ -64,6 +64,7 @@ namespace cmpt {
         return hasDigits;
     }
 
+    // Someone suggested to redo this with regex. Will try later!
     const std::string one::get_full_dirname() {
         auto pos = prob.url.rfind('/');
         const char* uri = prob.url.c_str();

@@ -8,7 +8,6 @@ namespace cmpt {
         const auto full_dir_name = o.get_full_dirname();
         std::string dir_path = ::getCurrentWorkingDirectory() + "/" + full_dir_name.substr(1) + "/" + full_dir_name;
 
-        // I know i know, i should use std::cerr so i can manip but don't need that ability right now.
         if (!fs::exists(dir_path)) {
             if (fs::create_directories(dir_path)) std::cout << "Directory created @ " << dir_path << "\n" ;
             else std::cout << "Failed creating directories @: " << dir_path << "\n";
@@ -38,10 +37,6 @@ namespace cmpt {
     }
 
     void execf::execute_contest_ult(config& cnf) {
-
-        // BUG Cannot reuse execute_one_ult due to file name being a mess with it. :(
-        // The bug happens because the url we get for contest is  https://codeforces.com/contest/2050/problem/A so problem appears.
-        // TODO Change this to fix the bug above.
         contest cnt;
         cnt.get_data_contest();
         for (auto& e : cnt.expose_contest()) {
