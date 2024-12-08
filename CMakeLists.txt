@@ -8,9 +8,12 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_definitions(-DDEBUG)
 
-list(APPEND SOURCE_FILES src/main.cpp
-						src/fetchers/one.cc
-						src/fetchers/contest.cc)
+list(APPEND SOURCE_FILES	src/main.cpp
+							src/execf.cc
+							src/fetchers/one.cc
+							src/fetchers/contest.cc
+							src/config/config.cc
+						)
 
 add_executable(cry ${SOURCE_FILES})
 target_include_directories(cry PUBLIC include/)

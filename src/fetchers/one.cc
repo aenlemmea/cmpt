@@ -2,6 +2,8 @@
 #include <stdexcept>
 
 namespace cmpt {
+
+
     std::optional<bool> one::get_data() {
         crow::SimpleApp app;
 
@@ -28,6 +30,7 @@ namespace cmpt {
         return std::optional<bool>{true};
     }
 
+
     std::optional<bool> one::wrangle(const crow::json::rvalue& json_data) {
         prob.name = json_data["name"].s();
         prob.group = json_data["group"].s();
@@ -42,6 +45,17 @@ namespace cmpt {
         prob.numTestCases = prob.tests.size();
         return std::optional<bool> { true };
     }
+
+    const std::string one::get_full_dirname() {
+         auto pos = prob.url.rfind('/');
+
+         std::string_view sss(prob.url.c_str(), pos);
+         auto penpos = sss.rfind('/');
+
+         // ul + penul
+         return std::string(prob.url.substr(pos + 1)) + std::string(sss.substr(penpos + 1, sss.length()));
+    }
+
 
     // I know I know I should define this in problem.hh but doing so gives weird linker errors.
     // BUG Investigate why the linker errors happen.

@@ -2,6 +2,7 @@
 #define FILETILS_H
 
 #include <iostream>
+#include <fstream>
 #include <filesystem>
 #include <unistd.h>
 #include <sys/types.h>

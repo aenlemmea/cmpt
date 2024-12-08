@@ -64,11 +64,11 @@ WARNING. Attempts to delete all the binary-name. If ran with contest-id, deletes
 For `cry fo <problem-id>`
 
 ```
-A2019/
-├── sol.cpp
-├── test_case.in
-└── test_case.out
-
+2023/
+└── A2023
+    ├── sol.cpp
+    ├── test.in
+    └── test.out
 ```
 #### TODO
 
