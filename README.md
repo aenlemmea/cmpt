@@ -4,7 +4,9 @@ Support_String::x86_64::GNU/Linux::Unix Makefiles
 
 ## cmpt (cry tool)
 
-Tool to help with competitive programming. Use [Competitive Companion](https://github.com/jmerle/competitive-companion) as an extension for fetching.
+Tool to help with competitive programming. Use [Competitive Companion](https://github.com/jmerle/competitive-companion) as an extension for fetching. Mainly for codeforces.
+
+Note: This tool is written for my personal use. 
 
 ### USAGE:
 
@@ -76,6 +78,7 @@ For `cry fo <problem-id>`
 ```
 #### TODO
 
+- [ ] Support leetcode and dmoj. >High Priority<
 - [ ] Support template placement strategies (viz. OVERWRITE or ADD_DUP)
 - [ ] Clang++ support for compilation flags
 - [ ] Custom directory structre or Alternate directory structure.

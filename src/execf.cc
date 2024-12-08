@@ -3,16 +3,14 @@
 
 namespace cmpt {
 
-    void execf::execute_one_ult() {
-        config cnf;
-        one o;
-        o.get_data();
+    void execf::execute_one_ult(config& cnf, one& o, bool isContest) {
+        if (!isContest) { o.get_data(); }
         const auto full_dir_name = o.get_full_dirname();
         std::string dir_path = ::getCurrentWorkingDirectory() + "/" + full_dir_name.substr(1) + "/" + full_dir_name;
 
         // I know i know, i should use std::cerr so i can manip but don't need that ability right now.
         if (!fs::exists(dir_path)) {
-            if (fs::create_directories(dir_path)) std::cout << "Directory created\n";
+            if (fs::create_directories(dir_path)) std::cout << "Directory created @ " << dir_path << "\n" ;
             else std::cout << "Failed creating directories @: " << dir_path << "\n";
         } else {
             std::cout << "Directory already exists.\n" << "\n";
@@ -39,7 +37,15 @@ namespace cmpt {
 
     }
 
-    void execf::execute_contest_ult() {
-        // TODO
+    void execf::execute_contest_ult(config& cnf) {
+
+        // BUG Cannot reuse execute_one_ult due to file name being a mess with it. :(
+        // TODO Change this to fix the bug above.
+        contest cnt;
+        bool isContest = true;
+        cnt.get_data_contest();
+        for (auto& e : cnt.expose_contest()) {
+            execute_one_ult(cnf, e, isContest);
+        }
     }
 };

@@ -14,7 +14,10 @@ namespace cmpt {
     class contest {
     public:
         void show() const noexcept;
-        std::optional<bool> push_data();
+
+        std::vector<one>& expose_contest() {
+            return cntst_problems;
+        }
         std::optional<bool> get_data_contest();
     private:
         std::optional<bool> wrangle_contest(crow::json::rvalue& json_data, uint16_t& received_blocks);

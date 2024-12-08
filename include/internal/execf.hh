@@ -20,8 +20,8 @@ namespace cmpt {
          *
          * Make two files test.in and test.out. Dump prob.__test.input and prob.__test.output in them.
          */
-        void execute_one_ult();
-        void execute_contest_ult();
+        void execute_one_ult(config& cnf, one& o, bool isContest);
+        void execute_contest_ult(config& cnf);
 
     };
 };
