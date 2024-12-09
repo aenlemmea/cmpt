@@ -28,6 +28,7 @@ namespace cmpt {
         std::string testType;           // Type of the tests (single or multiNumber). TODO Figure out what to do about multiNumber
         __batch batch;                  // Batch information
         uint32_t numTestCases;
+        std::vector<std::string> url_vec; // parts of the url to avoid the bug for dir_name.
 
 
         // Not using the following options for now.

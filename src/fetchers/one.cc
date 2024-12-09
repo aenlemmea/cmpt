@@ -1,8 +1,8 @@
 #include "fetchers/one.hh"
 #include <stdexcept>
+#include <ranges>
 
 namespace cmpt {
-
 
     std::optional<bool> one::get_data() {
         crow::SimpleApp app;
@@ -30,11 +30,21 @@ namespace cmpt {
         return std::optional<bool>{true};
     }
 
+    void one::process_url(std::string& url) {
+        // https://stackoverflow.com/a/68121694
+        auto split = url | std::ranges::views::split('/')
+        | std::ranges::views::transform([](auto&& str) { return std::string_view(&*str.begin(),        std::ranges::distance(str)); });
+
+        for(auto&& word : split) {
+            prob.url_vec.push_back(std::string(word));
+        }
+    };
 
     std::optional<bool> one::wrangle(const crow::json::rvalue& json_data) {
         prob.name = json_data["name"].s();
         prob.group = json_data["group"].s();
         prob.url = json_data["url"].s();
+        process_url(prob.url);
         prob.testType = json_data["testType"].s();
         prob.batch.id = json_data["batch"]["id"].s();
         prob.batch.size = json_data["batch"]["size"].i(); // We know that this will be one because of this class but still parse it for later use.
@@ -64,27 +74,15 @@ namespace cmpt {
         return hasDigits;
     }
 
-    // Someone suggested to redo this with regex. Will try later!
+    // Alternate way to get the dirname.
     const std::string one::get_full_dirname() {
-        auto pos = prob.url.rfind('/');
-        const char* uri = prob.url.c_str();
-        auto length = prob.url.length();
-
-        std::string_view sss(uri, pos);
-        auto penpos = sss.rfind('/');
-
-        if (isNumberCustom(std::string(sss.substr(penpos + 1, sss.length())))) {
-            return std::string(prob.url.substr(pos + 1, length)) + std::string(sss.substr(penpos + 1, sss.length()));
-        } else {
-            // I HATE THIS I HATE THIS I HATE THIS
-            // Definitely redoing this.
-            std::string_view ssss(uri, pos);
-            auto inpos = ssss.rfind('/');
-            std::string_view lookin(uri, inpos);
-            auto inpos_in = lookin.rfind('/');
-            return std::string(prob.url.substr(pos + 1, length)) + std::string(lookin.substr(inpos_in + 1));
+        for (const auto& st : prob.url_vec) {
+            if (isNumberCustom(st)) {
+                // ul + penul
+                return prob.url_vec.back() + st;
+            }
         }
-        // ul + penul
+        return "";
     }
 
     // I know I know I should define this in problem.hh but doing so gives weird linker errors.

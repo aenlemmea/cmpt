@@ -18,6 +18,8 @@ namespace cmpt {
         std::vector<one>& expose_contest() {
             return cntst_problems;
         }
+
+
         std::optional<bool> get_data_contest();
     private:
         std::optional<bool> wrangle_contest(crow::json::rvalue& json_data, uint16_t& received_blocks);
