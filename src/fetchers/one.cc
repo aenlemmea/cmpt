@@ -30,6 +30,8 @@ namespace cmpt {
         return std::optional<bool>{true};
     }
 
+
+    // TODO: Experiment with rejecting early any thing other than the last char (problem id) and the numeric contest id. So prob.url_vec can be reserved to size 2.
     void one::process_url(std::string& url) {
         // https://stackoverflow.com/a/68121694
         auto split = url | std::ranges::views::split('/')
@@ -56,33 +58,34 @@ namespace cmpt {
         return std::optional<bool> { true };
     }
 
-    bool isNumberCustom(const std::string& str) {
-        if(str.empty()) return false;
-        size_t i = 0;
-        if (str[0] == '+' || str[0] == '-') i = 1;
-
-        bool hasDigits = false, hasDecimalPoint = false;
-        for (; i < str.size(); ++i) {
-            if (std::isdigit(str[i])) {
-                hasDigits = true;
-            } else if (str[i] == '.' && !hasDecimalPoint) {
-                hasDecimalPoint = true;
-            } else {
-                return false;
-            }
-        }
-        return hasDigits;
-    }
-
     // Alternate way to get the dirname.
     const std::string one::get_full_dirname() {
+
+        auto isNumber = [](const std::string& str) -> bool {
+            if(str.empty()) return false;
+            size_t i = 0;
+            if (str[0] == '+' || str[0] == '-') i = 1;
+
+            bool hasDigits = false, hasDecimalPoint = false;
+            for (; i < str.size(); ++i) {
+                if (std::isdigit(str[i])) {
+                    hasDigits = true;
+                } else if (str[i] == '.' && !hasDecimalPoint) {
+                    hasDecimalPoint = true;
+                } else {
+                    return false;
+                }
+            }
+            return hasDigits;
+        };
+
         for (const auto& st : prob.url_vec) {
-            if (isNumberCustom(st)) {
+            if (isNumber(st)) {
                 // ul + penul
                 return prob.url_vec.back() + st;
             }
         }
-        return "";
+        return "E69420";
     }
 
     // I know I know I should define this in problem.hh but doing so gives weird linker errors.
