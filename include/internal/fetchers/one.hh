@@ -20,6 +20,7 @@ namespace cmpt {
 
         friend class contest;
     private:
+        void process_url(std::string& url);
         std::optional<bool> wrangle(const crow::json::rvalue& json_data);
         constexpr static bool is_one = true;
         problem prob;
