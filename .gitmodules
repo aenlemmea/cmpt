@@ -1,3 +1,6 @@
 [submodule "lib/Crow"]
 	path = lib/Crow
 	url = https://github.com/CrowCpp/Crow
+[submodule "lib/args"]
+	path = lib/args
+	url = https://github.com/Taywee/args

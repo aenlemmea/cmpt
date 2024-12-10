@@ -8,17 +8,35 @@ Tool to help with competitive programming. Use [Competitive Companion](https://g
 
 Note: This tool is written for my personal use. Major refactor incoming as this is my first cpp project.
 
+```
+  ./cry COMMAND {OPTIONS}
+
+    A tool to grab metadata from codeforces and manage them locally.
+
+  OPTIONS:
+
+      Available Commands:
+        fo                                Fetch a single problem.
+        fc                                Fetch an entire contest. Note: Not for
+                                          single problem contests
+      -h, --help                        Display this help menu
+
+    Planned support: leetcode, dmoj.
+
+```
+
+
 ### USAGE:
 
 1. `cry fo` 
 
-Fetches one problem. Equivalent to `cry --fetch-one`
+Fetches one problem. Equivalent to `cry --fetch-one`. [Done]
 
 -----
 
 2. `cry fc` 
 
-Fetches entire contest. Equivalent to `cry --fetch-contest`
+Fetches entire contest. Equivalent to `cry --fetch-contest` [Done]
 
 -----
 
