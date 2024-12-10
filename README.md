@@ -97,7 +97,7 @@ For `cry fo <problem-id>`
 ```
 #### TODO
 
-- [ ] Support leetcode and dmoj. >High Priority<
+- [ ] Support dmoj. >High Priority<
 - [ ] Support template placement strategies (viz. OVERWRITE or ADD_DUP)
 - [ ] Clang++ support for compilation flags
 - [ ] Custom directory structre or Alternate directory structure.

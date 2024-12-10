@@ -28,8 +28,8 @@ namespace cmpt {
             testin << e.input;
             testout << e.output;
 
-            testin << "\n###\n";
-            testout << "\n###\n";
+            // testin << "\n###\n";
+            // testout << "\n###\n";
         };
         testout.close();
         testin.close();
