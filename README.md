@@ -9,7 +9,7 @@ Tool to help with competitive programming. Use [Competitive Companion](https://g
 Note: This tool is written for my personal use. Major refactor incoming as this is my first cpp project.
 
 ```
-  ./cry >COMMAND<
+  cry >COMMAND<
 
     A tool to grab metadata from codeforces and manage them locally.
 
@@ -19,10 +19,11 @@ Note: This tool is written for my personal use. Major refactor incoming as this 
         fo                                Fetch a single problem.
         fc                                Fetch an entire contest. Note: Not for
                                           single problem contests
+        fosho                             Inspect the single fetched problem
+                                          data. Note: Not json
       -h, --help                        Display this help menu
 
-    Planned support: leetcode, dmoj.
-
+    Planned support: dmoj.
 
 ```
 
