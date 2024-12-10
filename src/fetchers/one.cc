@@ -13,6 +13,7 @@ namespace cmpt {
                 std::cerr << "Invalid JSON data" << std::endl;
                 return crow::response(400, "Invalid JSON data");
             }
+
             app.stop();
             wrangle(t_data);
             return crow::response(200);
@@ -24,9 +25,10 @@ namespace cmpt {
         .port(1327)
         .run();
 
-        if (is_one && prob.batch.size > 1) throw std::runtime_error("You tried fetching a contest with --fetch-one (cry fo), use --fetch-contest (cry fc) instead.");
+        if (is_one && prob.batch.size > 1) throw std::runtime_error("You tried fetching a contest with --fetch-one (cry fo), use --fetch-contest (cry fc) instead. Did you Ctrl-C abruptly?");
 
         std::cout << "Server stopped" << std::endl;
+
         return std::optional<bool>{true};
     }
 

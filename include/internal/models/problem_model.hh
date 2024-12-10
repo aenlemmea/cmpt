@@ -14,8 +14,8 @@ struct __test {
 
 // Batch configuration
 struct __batch {
-    std::string id;  // UUIDv4
-    uint32_t size;        // Size of the batch
+    std::string id;           // UUIDv4
+    uint32_t size;        // Size of the batch.
 };
 
 
