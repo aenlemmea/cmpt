@@ -20,7 +20,6 @@ target_include_directories(cry PUBLIC include/)
 target_include_directories(cry PRIVATE include/internal)
 target_include_directories(cry PRIVATE include/crow_include/)
 
-
 set(SUBMODULES_LIST
 	"${PROJECT_SOURCE_DIR}/lib/Crow/"
 	"${PROJECT_SOURCE_DIR}/lib/args/"

@@ -13,6 +13,9 @@ int main(int argc, char **argv)
     args::Command fo(commands, "fo", "Fetch a single problem.");
     args::Command fc(commands, "fc", "Fetch an entire contest. Note: Not for single problem contests");
     args::HelpFlag help(parser, "help", "Display this help menu", {'h', "help"});
+    parser.helpParams.optionsString = ">COMMAND<:";
+    parser.helpParams.proglineCommand = ">COMMAND<";
+    parser.helpParams.proglineOptions = "";
 
     try
     {
@@ -36,7 +39,6 @@ int main(int argc, char **argv)
     }
     catch (args::ValidationError e)
     {
-        std::cerr << e.what() << std::endl;
         std::cerr << parser;
         return 1;
     }

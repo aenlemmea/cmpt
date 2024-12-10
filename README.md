@@ -9,11 +9,11 @@ Tool to help with competitive programming. Use [Competitive Companion](https://g
 Note: This tool is written for my personal use. Major refactor incoming as this is my first cpp project.
 
 ```
-  ./cry COMMAND {OPTIONS}
+  ./cry >COMMAND<
 
     A tool to grab metadata from codeforces and manage them locally.
 
-  OPTIONS:
+  >COMMAND<:
 
       Available Commands:
         fo                                Fetch a single problem.
@@ -22,6 +22,7 @@ Note: This tool is written for my personal use. Major refactor incoming as this 
       -h, --help                        Display this help menu
 
     Planned support: leetcode, dmoj.
+
 
 ```
 
