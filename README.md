@@ -42,37 +42,30 @@ Fetches entire contest. Equivalent to `cry --fetch-contest` [Done]
 
 -----
 
-3. `cry rn <binary-name>`
+3. `crn`
 
-Run the binary-name. If binary-name is not found, attempts to compile and run from source file that matches binary-name. If no source file found, reports error
+This is a small script to compile if-not run the binary. Must be called from where `sol.cpp` is generated.
+
+If `runfile` is not found, attempts to compile and create `runfile` (`g++ sol.cpp $default_flags -o runfile`) and run it. If no source file found, reports error. The `$default_flags` can be customised with cry tool (See #4 for how).
+
+> [!NOTE] 
+> libasan on linux is a prerequisite for using the default flags. It is required by -fsanitize-address. If you don't want to install it. Just set custom flags via cry.
+
+[Done]
 
 -----
 
-4. `cry rt <binary-name>`
-
-Test the binary name with the prefetched test.in and test.out files. If binary-name is not found, attempt to compile, run and test. Compilation criteria is same as for `cry rn`
-
------
-
-5. `cry config <--template> <--template-alias>|<--compile-flags> <--flag-preset-name>|`
+4. `cry config <--template> <--template-alias>|<--compile-flags> <--flag-preset-name>|`
 
 Only running `cry config` shows you what the current config is. 
 
 Set the template file and a alias for it or the compiler flags. 
 
-The base minimul compile-flag is set to `-Wall -Wextra -O2 -std=c++20 -Wconversion -Wduplicated-cond -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -fsanitize=address`. Currently `g++` support is baked in, `clang++` support is due.
+The base minimul compile-flag (`default_flags`) is set to `-Wall -Wextra -O2 -std=c++20 -Wconversion -Wduplicated-cond -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -fsanitize=address`. Currently `g++` support is baked in, `clang++` support is due.
 
 -----
 
-6. `cry clean <...contest-id>|<problem-id>| rm <--template-alias>`
-
-Only running `cry clean` would attempt to clear 
-
-WARNING. Attempts to delete all the binary-name. If ran with contest-id, deletes all binaries found in that directory. Multiple contest-ids can be stated. The last part allows deleting templates. Note: the default template CANNOT be deleted under any circumstance.
-
------
-
-7. `cry ape <problem-id>`
+5. `cry ape <problem-id>`
 
 [Low Priority] Equivalent to `cry --apetize <problem-id>` to dump the problem to any local LLM model and get a much cleaner reading statement. 
 
@@ -83,11 +76,11 @@ WARNING. Attempts to delete all the binary-name. If ran with contest-id, deletes
 2. You will manually need to install the `asio-dev` or `asio-devel` library for their headers (needed by crow).
 3. Rest create a `build` directory, enter it as: `mkdir -p build && cd build`
 4. Run `cmake .. -G "Unix Makefiles"`. or, instead of step 3 and 4: you can run `./build.sh` and it will do everything for you.
-5. Run `./build.sh` to get a clean slate.
+5. Run `./build.sh clean` to get a clean slate.
 
 ### DIRECTORY STYLE:
 
-For `cry fo <problem-id>`
+For `cry fo`. `cry fc` has the same style but instead of just A2023, we have all subsequent problems B,C,D,.. saved in the 2023 directory. This style allows all problems under a contest to be saved in the same file.
 
 ```
 2023/
@@ -109,3 +102,9 @@ For `cry fo <problem-id>`
 #### Why `cry`?
 
 Well, the plan was to use `cmp`, but `cmp` is already used as a tool in GNU/Linux environment, hence had to settle for `cry`. Feel free to alias.
+
+#### Rationale
+
+The motivation behind this is due to the lack of a proper and lightweight tool. The closest thing is probably [cf-tool](https://github.com/xalanq/cf-tool) which is really great and awesome (and written by people who actually know what they are doing) but it is not maintained as of the time of writing this, and more importantly aims to be a complete suite of tools, and sadly written in golang. 
+
+`cmpt` does NOT aim to be a complete suite. It is made to be light, fast and barebones if possible. There is no testing, submitting or tracking facilities builtin. The user is expected to do those things themselves.

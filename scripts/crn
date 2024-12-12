@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+
+if ldconfig -p | grep -q libasan; then
+	weat=$(pwd)
+	if [[ -x $weat/runfile ]]; then 
+		echo "runfile found. Running!"
+		$weat/runfile
+		exit 0
+	fi
+
+	if [[ -e $weat/sol.cpp ]]; then
+		flags=$(cat $HOME/.cmpt/cmptconf.json | python3 -c "import sys, json; print(json.load(sys.stdin)['compile_flags']['g++']['base'])")
+		echo "Compiling sol.cpp using default g++ flags"
+		g++ $weat/sol.cpp $flags -o runfile
+		$weat/runfile
+		exit 0
+	else 
+		echo "runfile or sol.cpp not found. Exiting"
+		exit 1
+	fi
+else 
+	echo "libasan not found. Please install it for your distro. Need it for -fsanitize-address to work."
+	exit 1
+fi
+
