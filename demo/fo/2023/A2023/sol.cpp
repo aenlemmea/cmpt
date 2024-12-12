@@ -12,7 +12,7 @@
 #include<string.h>
 #include<iostream>
 #include<algorithm>
-#include <unordered_map>
+#include<unordered_map>
 
 //#include<bits/stdc++.h>
 
@@ -24,6 +24,7 @@
 using namespace std;
 mt19937 rnd(time(0));
 const ll mod = 998244353;
+const int32_t inf = 1e9 + 10;
 const ll INF = 9223372036854775807;
 const ll MMOD = 1e9 + 7;
 
@@ -54,8 +55,7 @@ void fio()
     cout.tie(0);
 }
 
-void solve()
-{
+void solve() {
 
 }
 
@@ -64,7 +64,7 @@ int main()
     fio();
 
     #ifndef ONLINE_JUDGE
-        freopen("test.in","r",stdin);
+        freopen("test.in", "r", stdin);
     #endif
 
     ll t = 1;

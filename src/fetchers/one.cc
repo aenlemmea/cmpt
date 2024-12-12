@@ -61,7 +61,7 @@ namespace cmpt {
     }
 
     // Alternate way to get the dirname.
-    const std::string one::get_full_dirname() {
+    const std::string one::get_contest_num() {
 
         auto isNumber = [](const std::string& str) -> bool {
             if(str.empty()) return false;
@@ -84,7 +84,7 @@ namespace cmpt {
         for (const auto& st : prob.url_vec) {
             if (isNumber(st)) {
                 // ul + penul
-                return prob.url_vec.back() + st;
+                return st;
             }
         }
         return "E69420";

@@ -5,8 +5,9 @@ namespace cmpt {
 
     void execf::execute_one_ult(config& cnf, one& o, const bool isContest) {
         if (!isContest) { o.get_data(); }
-        const auto full_dir_name = o.get_full_dirname();
-        std::string dir_path = ::getCurrentWorkingDirectory() + "/" + full_dir_name.substr(1) + "/" + full_dir_name;
+
+        const auto contest_num = o.get_contest_num();
+        std::string dir_path = ::getCurrentWorkingDirectory() + "/" + contest_num + "/" + o.get_prob_name() + contest_num;
 
         if (!fs::exists(dir_path)) {
             if (fs::create_directories(dir_path)) std::cout << "Directory created @ " << dir_path << "\n" ;
@@ -24,7 +25,7 @@ namespace cmpt {
 
         std::ofstream testin(dir_path + "/test.in");
         std::ofstream testout(dir_path + "/test.out");
-        for (const auto& e : o.expose_prob().tests) {
+        for (const auto& e : o.get_prob_tests()) {
             testin << e.input;
             testout << e.output;
 
