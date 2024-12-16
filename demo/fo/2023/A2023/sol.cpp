@@ -24,9 +24,14 @@
 using namespace std;
 mt19937 rnd(time(0));
 const ll mod = 998244353;
-const int32_t inf = 1e9 + 10;
 const ll INF = 9223372036854775807;
 const ll MMOD = 1e9 + 7;
+
+int top(int a, int b){
+    int res = a/b;
+    if(b * res != a) res += (a > 0) & (b > 0);
+    return res;
+}
 
 ll power(ll x, unsigned ll y) {
     // returns  x^y % p
@@ -64,7 +69,7 @@ int main()
     fio();
 
     #ifndef ONLINE_JUDGE
-        freopen("test.in", "r", stdin);
+    freopen("test.in", "r", stdin);
     #endif
 
     ll t = 1;

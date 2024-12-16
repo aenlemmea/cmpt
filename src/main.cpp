@@ -13,6 +13,7 @@ int main(int argc, char **argv)
     args::Command fo(commands, "fo", "Fetch a single problem.");
     args::Command fc(commands, "fc", "Fetch an entire contest. Note: Not for single problem contests");
     args::Command fosho(commands, "fosho", "Inspect the single fetched problem data. Note: Not json");
+    args::Command config(commands, "config", "Show the default config");
     args::HelpFlag help(parser, "help", "Display this help menu", {'h', "help"});
     parser.helpParams.optionsString = ">COMMAND<:";
     parser.helpParams.proglineCommand = ">COMMAND<";
@@ -28,6 +29,8 @@ int main(int argc, char **argv)
         } else if (fosho) {
             aprob.get_data();
             aprob.show();
+        } else if (config) {
+            cnf.show();
         }
     }
     catch (args::Help)
@@ -38,7 +41,6 @@ int main(int argc, char **argv)
     catch (args::ParseError e)
     {
         std::cerr << e.what() << std::endl;
-        std::cerr << parser;
         return 1;
     }
     catch (args::ValidationError e)

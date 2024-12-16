@@ -4,6 +4,8 @@ Support_String::x86_64::GNU/Linux::Unix Makefiles
 
 ## cmpt (cry tool)
 
+Pronounced: _compete_
+
 Tool to help with competitive programming. Use [Competitive Companion](https://github.com/jmerle/competitive-companion) as an extension for fetching. Mainly for codeforces.
 
 Note: This tool is written for my personal use. Major refactor incoming as this is my first cpp project.
@@ -21,6 +23,7 @@ Note: This tool is written for my personal use. Major refactor incoming as this 
                                           single problem contests
         fosho                             Inspect the single fetched problem
                                           data. Note: Not json
+        config                            Show the default config
       -h, --help                        Display this help menu
 
     Planned support: dmoj.
@@ -57,7 +60,7 @@ If `runfile` is not found, attempts to compile and create `runfile` (`g++ sol.cp
 
 4. `cry config <--template> <--template-alias>|<--compile-flags> <--flag-preset-name>|`
 
-Only running `cry config` shows you what the current config is. 
+Only running `cry config` shows you what the current config is. [Done]
 
 Set the template file and a alias for it or the compiler flags. 
 
