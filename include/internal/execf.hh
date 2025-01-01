@@ -8,6 +8,8 @@
 /**
  * Ultimate executor class
  * Mostly responsible for file manip.
+ *
+ * Maybe this can be deprecated in favour of a anon namespace directly in the impl.
  */
 namespace cmpt {
     class execf {

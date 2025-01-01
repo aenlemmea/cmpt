@@ -8,7 +8,7 @@ Pronounced: _compete_
 
 Tool to help with competitive programming. Use [Competitive Companion](https://github.com/jmerle/competitive-companion) as an extension for fetching. Mainly for codeforces.
 
-Note: This tool is written for my personal use. Major refactor incoming as this is my first cpp project.
+Note: This tool is written for my personal use. Major refactor incoming as this is my first cpp project. I am aware that the generated binary is quite big, rewritev3 will attempt to keep it small.
 
 ```
   cry >COMMAND<
@@ -94,7 +94,9 @@ For `cry fo`. `cry fc` has the same style but instead of just A2023, we have all
 ```
 #### TODO
 
+- [ ] Trim the binary. The current size is exceptionally big. >URGENT Hight Priority<
 - [ ] Support dmoj. >High Priority<
+- [ ] Log Mode. Log which problems are done (submitted/accepted) and which are not done as well as last fetched. In a file.
 - [ ] Support template placement strategies (viz. OVERWRITE or ADD_DUP)
 - [ ] Clang++ support for compilation flags
 - [ ] Custom directory structre or Alternate directory structure.
@@ -110,4 +112,4 @@ Well, the plan was to use `cmp`, but `cmp` is already used as a tool in GNU/Linu
 
 The motivation behind this is due to the lack of a proper and lightweight tool. The closest thing is probably [cf-tool](https://github.com/xalanq/cf-tool) which is really great and awesome (and written by people who actually know what they are doing) but it is not maintained as of the time of writing this, and more importantly aims to be a complete suite of tools, and sadly written in golang. 
 
-`cmpt` does NOT aim to be a complete suite. It is made to be light, fast and barebones if possible. There is no testing, submitting or tracking facilities builtin. The user is expected to do those things themselves.
+`cmpt` does NOT aim to be a complete suite. It is made to be light, fast and barebones if possible. There is no auto testing, submitting or tracking facilities builtin. The user is expected to do those things themselves.

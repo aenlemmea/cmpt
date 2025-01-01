@@ -6,6 +6,12 @@ namespace cmpt {
     void execf::execute_one_ult(config& cnf, one& o, const bool isContest) {
         if (!isContest) { o.get_data(); }
 
+
+        // TODO: rewritev3. Currently execute_contest_ult computes the paths for each prob. We can avoid that
+        // and have it compute things once and then use it. This would allow some nice constness to be used.
+
+        // TODO: rewritev3. Make the test dumping more flexible due to the multiLine flag, this is currently tricky.
+
         const auto contest_num = o.get_contest_num();
         std::string dir_path = ::getCurrentWorkingDirectory() + "/" + contest_num + "/" + o.get_prob_name() + contest_num;
 
